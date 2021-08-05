@@ -1,1 +1,1 @@
-export * from './options.interfaces'
+export * from './options.interfaces';

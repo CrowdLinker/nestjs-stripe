@@ -33,18 +33,18 @@ import { StripeModule, StripeOptions } from '@crowdlinker/nestjs-stripe';
 
 @Module({
   imports: [
-      StripeModule.forRoot({
-          apiKey: 'STRIPE_API_KEY',
-          config: {
-              apiVersion: '2019-08-08',
-              maxNetworkRetries: 1,
-              httpAgent: null,
-              timeout: 1000,
-              host: 'api.example.com',
-              port: 123,
-              telemetry: true,
-          }
-      } as StripeOptions),
+    StripeModule.forRoot({
+      apiKey: 'STRIPE_API_KEY',
+      config: {
+        apiVersion: '2019-08-08',
+        maxNetworkRetries: 1,
+        httpAgent: null,
+        timeout: 1000,
+        host: 'api.example.com',
+        port: 123,
+        telemetry: true,
+      }
+    } as StripeOptions),
   ],
 })
 ```
@@ -56,22 +56,22 @@ import { StripeModule, StripeOptions } from '@crowdlinker/nestjs-stripe';
 
 @Module({
   imports: [
-      StripeModule.forRootAsync({
+    StripeModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) =>
         ({
-            apiKey: configService.apiKey,
-            config: {
-                apiVersion: configService.apiVersion,
-                maxNetworkRetries: configService.maxNetworkRetries,
-                httpAgent: configService.httpAgent,
-                timeout: configService.timeout,
-                host: configService.host,
-                port: configService.port,
-                telemetry: configService.telemetry,
-            }
+          apiKey: configService.apiKey,
+          config: {
+            apiVersion: configService.apiVersion,
+            maxNetworkRetries: configService.maxNetworkRetries,
+            httpAgent: configService.httpAgent,
+            timeout: configService.timeout,
+            host: configService.host,
+            port: configService.port,
+            telemetry: configService.telemetry,
+          }
         } as StripeOptions),
-      inject: [ConfigService],
+    inject: [ConfigService],
     }),
   ],
 })
@@ -83,13 +83,11 @@ import { StripeModule, StripeOptions } from '@crowdlinker/nestjs-stripe';
 import { Stripe } from '@crowdlinker/nestjs-stripe';
 
 class StripeService {
-  constructor(
-    private readonly stripe: Stripe
-  ) {}
+  constructor(private readonly stripe: Stripe) {}
 
   async createConsumer(email) {
     return await this.stripe.customer.create({
-        email,
+      email,
     });
   }
 }

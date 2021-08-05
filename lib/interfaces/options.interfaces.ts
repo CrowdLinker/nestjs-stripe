@@ -7,8 +7,8 @@ import { ModuleMetadata, Type } from '@nestjs/common';
  * @interface
  */
 export interface StripeOptions {
-    apiKey: string;
-    config: BaseStripe.StripeConfig;
+  apiKey: string;
+  config: BaseStripe.StripeConfig;
 }
 
 /**
@@ -17,7 +17,7 @@ export interface StripeOptions {
  * @interface
  */
 export interface StripeOptionsFactory {
-    createStripeOptions(): StripeOptions | Promise<StripeOptions>;
+  createStripeOptions(): StripeOptions | Promise<StripeOptions>;
 }
 
 /**
@@ -25,10 +25,10 @@ export interface StripeOptionsFactory {
  *
  * @interface
  */
-export interface StripeAsyncOptions extends Pick<ModuleMetadata, 'imports'>{
-    name?: string;
-    inject?: any[];
-    useClass?: Type<StripeOptionsFactory>;
-    useExisting?: Type<StripeOptionsFactory>;
-    useFactory?: (...args: any[]) => StripeOptions | Promise<StripeOptions>;
+export interface StripeAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
+  name?: string;
+  inject?: any[];
+  useClass?: Type<StripeOptionsFactory>;
+  useExisting?: Type<StripeOptionsFactory>;
+  useFactory?: (...args: any[]) => StripeOptions | Promise<StripeOptions>;
 }

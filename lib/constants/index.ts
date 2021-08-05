@@ -1,1 +1,1 @@
-export * from './inject-token.constants'
+export * from './inject-token.constants';
