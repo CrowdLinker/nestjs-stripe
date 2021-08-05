@@ -13,10 +13,10 @@
     "publish:dev": "npm publish --access public --tag dev"
   },
   "dependencies": {
-    "@nestjs/common": "^8.0.5",
     "stripe": "^8.167.0"
   },
   "devDependencies": {
+    "@nestjs/common": "^8.0.5",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "@types/stripe": "^8.0.417",
