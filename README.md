@@ -29,7 +29,7 @@ npm install --save-dev @types/stripe
 #### Synchronous
 
 ```js
-import { StripeModule, StripeOptions } from '@crowdlinker/nestjs-stripe';
+import { StripeModule, StripeModuleOptions } from '@crowdlinker/nestjs-stripe';
 
 @Module({
   imports: [
@@ -44,7 +44,7 @@ import { StripeModule, StripeOptions } from '@crowdlinker/nestjs-stripe';
         port: 123,
         telemetry: true,
       }
-    } as StripeOptions),
+    } as StripeModuleOptions),
   ],
 })
 ```
@@ -52,7 +52,7 @@ import { StripeModule, StripeOptions } from '@crowdlinker/nestjs-stripe';
 #### Asynchronous
 
 ```js
-import { StripeModule, StripeOptions } from '@crowdlinker/nestjs-stripe';
+import { StripeModule, StripeModuleOptions } from '@crowdlinker/nestjs-stripe';
 
 @Module({
   imports: [
@@ -70,7 +70,7 @@ import { StripeModule, StripeOptions } from '@crowdlinker/nestjs-stripe';
             port: configService.port,
             telemetry: configService.telemetry,
           }
-        } as StripeOptions),
+        } as StripeModuleOptions),
     inject: [ConfigService],
     }),
   ],
@@ -95,7 +95,7 @@ class StripeService {
 
 ## Important Points To Note
 
-- Code is written in Typescript (v4.3.5)
+- Code is written in Typescript (v5.1.3)
 
 ## Contributors
 

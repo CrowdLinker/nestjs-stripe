@@ -1,11 +1,17 @@
-import { DynamicModule, Global, Module, Provider, Type } from '@nestjs/common';
-import { STRIPE_OPTIONS } from './constants';
-import { Stripe } from './stripe';
 import {
-  StripeOptions,
-  StripeAsyncOptions,
-  StripeOptionsFactory,
+  StripeModuleOptions,
+  StripeAsyncModuleOptions,
+  StripeModuleOptionsFactory,
 } from './interfaces';
+import { Stripe } from './stripe';
+import { DynamicModule, Global, Module, Provider, Type } from '@nestjs/common';
+
+/**
+ * Constant defining token for injecting stripe module options.
+ *
+ * @constant
+ */
+export const STRIPE_MODULE_OPTIONS = 'STRIPE_MODULE_OPTIONS';
 
 /**
  * Import and provide base stripe related classes.
@@ -21,16 +27,16 @@ export class StripeCoreModule {
   /**
    * Create a dynamic nestjs-stripe module.
    *
-   * @param {StripeOptions} options
+   * @param {StripeModuleOptions} options
    *
    * @returns {DynamicModule}
    */
-  static forRoot(options: StripeOptions): DynamicModule {
+  static forRoot(options: StripeModuleOptions): DynamicModule {
     return {
       module: StripeCoreModule,
       providers: [
         {
-          provide: STRIPE_OPTIONS,
+          provide: STRIPE_MODULE_OPTIONS,
           useValue: options,
         },
       ],
@@ -40,11 +46,11 @@ export class StripeCoreModule {
   /**
    * Create a dynamic nestjs-stripe module asynchronous-ly.
    *
-   * @param {StripeOptions} options
+   * @param {StripeModuleOptions} options
    *
    * @returns {DynamicModule}
    */
-  static forRootAsync(options: StripeAsyncOptions): DynamicModule {
+  static forRootAsync(options: StripeAsyncModuleOptions): DynamicModule {
     return {
       module: StripeCoreModule,
       imports: options.imports,
@@ -55,16 +61,16 @@ export class StripeCoreModule {
   /**
    * Create nestjs-stripe config providers asynchronous-ly.
    *
-   * @param {StripeAsyncOptions} options
+   * @param {StripeAsyncModuleOptions} options
    *
    * @returns {Provider[]}
    */
-  private static createAsyncProviders(options: StripeAsyncOptions): Provider[] {
+  private static createAsyncProviders(options: StripeAsyncModuleOptions): Provider[] {
     if (options.useExisting || options.useFactory) {
       return [this.createAsyncConfigProvider(options)];
     }
 
-    const useClass = options.useClass as Type<StripeOptionsFactory>;
+    const useClass = options.useClass as Type<StripeModuleOptionsFactory>;
 
     return [
       this.createAsyncConfigProvider(options),
@@ -78,29 +84,29 @@ export class StripeCoreModule {
   /**
    * Create nestjs-stripe config provider asynchronous-ly.
    *
-   * @param {StripeAsyncOptions} options
+   * @param {StripeAsyncModuleOptions} options
    *
    * @returns {Provider}
    */
   private static createAsyncConfigProvider(
-    options: StripeAsyncOptions,
+    options: StripeAsyncModuleOptions,
   ): Provider {
     if (options.useFactory) {
       return {
-        provide: STRIPE_OPTIONS,
+        provide: STRIPE_MODULE_OPTIONS,
         useFactory: options.useFactory,
         inject: options.inject || [],
       };
     }
 
     const inject = [
-      (options.useClass || options.useExisting) as Type<StripeOptionsFactory>,
+      (options.useClass || options.useExisting) as Type<StripeModuleOptionsFactory>,
     ];
 
     return {
-      provide: STRIPE_OPTIONS,
-      useFactory: async (configFactory: StripeOptionsFactory) =>
-        await configFactory.createStripeOptions(),
+      provide: STRIPE_MODULE_OPTIONS,
+      useFactory: async (configFactory: StripeModuleOptionsFactory) =>
+        await configFactory.createStripeModuleOptions(),
       inject,
     };
   }
