@@ -1,7 +1,7 @@
 #!/bin/bash
 # Publish package version with a version (picks up from package.json so please update it before running this).
 #
-# Copyright 2021 Crowdlinker
+# Copyright 2024 Crowdlinker
 #
 # You should have received a copy of the MIT along with this program.
 # If not, see <https://opensource.org/licenses/MIT>.
