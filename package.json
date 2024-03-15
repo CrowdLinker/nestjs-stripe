@@ -13,16 +13,15 @@
     "publish:dev": "npm publish --access public --tag dev"
   },
   "dependencies": {
-    "stripe": "^8.167.0"
+    "stripe": "^14.21.0"
   },
   "devDependencies": {
-    "@nestjs/common": "^8.0.5",
-    "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/parser": "^4.29.0",
-    "@types/stripe": "^8.0.417",
-    "eslint": "^7.32.0",
-    "prettier": "^2.3.2",
-    "typescript": "^4.3.5"
+    "@nestjs/common": "^10.3.1",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.42.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.3"
   },
   "repository": {
     "url": "https://github.com/CrowdLinker/nestjs-stripe",
