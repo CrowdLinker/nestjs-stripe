@@ -10,7 +10,7 @@ Stripe module for NestJS
 
 ## Packages
 
-- [Stripe](https://www.npmjs.com/package/stripe/v/8.167.0) - stripe (v8.167.0)
+- [Stripe](https://www.npmjs.com/package/stripe/v/14.21.0) - stripe (v14.21.0)
 
 ## Installation
 
@@ -85,13 +85,15 @@ import { Stripe } from '@crowdlinker/nestjs-stripe';
 class StripeService {
   constructor(private readonly stripe: Stripe) {}
 
-  async createConsumer(email) {
-    return await this.stripe.customer.create({
-      email,
-    });
+  async createCustomer(email) {
+    return await this.stripe.customer.create({ email });
   }
 }
 ```
+
+### For Previous v0.1.0 Version
+
+- `StripeOptions` was renamed to `StripeModuleOptions` in `v0.2.0`. So, for versions lower than `v0.2.0`, please update your imports accordingly.
 
 ## Important Points To Note
 

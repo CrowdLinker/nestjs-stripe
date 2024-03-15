@@ -1,7 +1,7 @@
 import BaseStripe from 'stripe';
+import { StripeModuleOptions } from './interfaces';
 import { Inject, Injectable } from '@nestjs/common';
-import { STRIPE_OPTIONS } from './constants';
-import { StripeOptions } from './interfaces';
+import { STRIPE_MODULE_OPTIONS } from './stripe-core.module';
 
 /**
  * Class related to handling stripe tasks.
@@ -15,10 +15,10 @@ export class Stripe extends BaseStripe {
    *
    * @constructor
    *
-   * @param {StripeOptions} options
+   * @param {StripeModuleOptions} options
    *
    */
-  constructor(@Inject(STRIPE_OPTIONS) options: StripeOptions) {
+  constructor(@Inject(STRIPE_MODULE_OPTIONS) options: StripeModuleOptions) {
     super(options.apiKey, options.config);
   }
 }
