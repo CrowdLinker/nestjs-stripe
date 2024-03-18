@@ -93,7 +93,7 @@ class StripeService {
 
 ### For Previous v0.1.0 Version
 
-- `StripeOptions` was renamed to `StripeModuleOptions` in `v0.2.0`. So, for versions lower than `v0.2.0`, please update your imports accordingly.
+- `StripeOptions` was renamed to `StripeModuleOptions` in `v0.2`. So, for versions lower than `v0.2`, please update your imports accordingly.
 
 ## Important Points To Note
 
