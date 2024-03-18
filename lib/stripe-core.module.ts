@@ -4,14 +4,8 @@ import {
   StripeModuleOptionsFactory,
 } from './interfaces';
 import { Stripe } from './stripe';
+import { STRIPE_MODULE_OPTIONS } from './constants/module-options';
 import { DynamicModule, Global, Module, Provider, Type } from '@nestjs/common';
-
-/**
- * Constant defining token for injecting stripe module options.
- *
- * @constant
- */
-export const STRIPE_MODULE_OPTIONS = 'STRIPE_MODULE_OPTIONS';
 
 /**
  * Import and provide base stripe related classes.
@@ -65,7 +59,9 @@ export class StripeCoreModule {
    *
    * @returns {Provider[]}
    */
-  private static createAsyncProviders(options: StripeAsyncModuleOptions): Provider[] {
+  private static createAsyncProviders(
+    options: StripeAsyncModuleOptions,
+  ): Provider[] {
     if (options.useExisting || options.useFactory) {
       return [this.createAsyncConfigProvider(options)];
     }
@@ -100,7 +96,8 @@ export class StripeCoreModule {
     }
 
     const inject = [
-      (options.useClass || options.useExisting) as Type<StripeModuleOptionsFactory>,
+      (options.useClass ||
+        options.useExisting) as Type<StripeModuleOptionsFactory>,
     ];
 
     return {

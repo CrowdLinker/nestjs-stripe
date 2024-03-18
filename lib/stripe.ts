@@ -1,7 +1,7 @@
 import BaseStripe from 'stripe';
 import { StripeModuleOptions } from './interfaces';
 import { Inject, Injectable } from '@nestjs/common';
-import { STRIPE_MODULE_OPTIONS } from './stripe-core.module';
+import { STRIPE_MODULE_OPTIONS } from './constants/module-options';
 
 /**
  * Class related to handling stripe tasks.
