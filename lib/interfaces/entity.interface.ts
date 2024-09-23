@@ -13,23 +13,7 @@ export type StripeEntity =
   | BaseStripe.Invoice
   | BaseStripe.Customer
   | BaseStripe.Subscription
-  | BaseStripe.PaymentMethod
-  | BaseStripe.PaymentIntent
-  | BaseStripe.SubscriptionSchedule;
-
-/**
- * Stripe entity param type declaration.
- *
- * @type
- */
-export type StripeEntityParam =
-  | BaseStripe.Price
-  | BaseStripe.Coupon
-  | BaseStripe.Charge
-  | BaseStripe.Product
-  | BaseStripe.Invoice
-  | BaseStripe.Customer
-  | BaseStripe.Subscription
+  | BaseStripe.PromotionCode
   | BaseStripe.PaymentMethod
   | BaseStripe.PaymentIntent
   | BaseStripe.SubscriptionSchedule;

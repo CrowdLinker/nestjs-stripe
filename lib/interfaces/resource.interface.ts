@@ -14,5 +14,6 @@ export type StripeEntityResource =
   | BaseStripe.CustomersResource
   | BaseStripe.SubscriptionsResource
   | BaseStripe.PaymentMethodsResource
+  | BaseStripe.PromotionCodesResource
   | BaseStripe.PaymentIntentsResource
   | BaseStripe.SubscriptionSchedulesResource;
