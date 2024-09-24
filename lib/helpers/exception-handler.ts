@@ -25,6 +25,7 @@ export const handleStripeException = (
 ): void => {
   const type = get(err, 'type', null);
   const code = get(err, 'code', null);
+  const message = get(err, 'message', null);
 
   switch (type) {
     case STRIPE_EXCEPTIONS.CARD_ERROR:
@@ -45,9 +46,7 @@ export const handleStripeException = (
       if (code === ERROR_CODES.RESOURCE_MISSING) {
         throw new NotFoundException(entityErrors.NOT_FOUND);
       } else {
-        throw new BadRequestException(
-          'The payment gateway denied the request.',
-        );
+        throw new BadRequestException(message);
       }
     case STRIPE_EXCEPTIONS.RATE_LIMIT_ERROR:
     case STRIPE_EXCEPTIONS.API_ERROR:
