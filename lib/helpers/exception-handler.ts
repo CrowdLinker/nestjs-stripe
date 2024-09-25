@@ -25,6 +25,7 @@ export const handleStripeException = (
 ): void => {
   const type = get(err, 'type', null);
   const code = get(err, 'code', null);
+  const param = get(err, 'param', null);
   const message = get(err, 'message', null);
 
   switch (type) {
@@ -46,7 +47,7 @@ export const handleStripeException = (
       if (code === ERROR_CODES.RESOURCE_MISSING) {
         throw new NotFoundException(entityErrors.NOT_FOUND);
       } else {
-        throw new BadRequestException(message);
+        throw new BadRequestException(message, param);
       }
     case STRIPE_EXCEPTIONS.RATE_LIMIT_ERROR:
     case STRIPE_EXCEPTIONS.API_ERROR:
