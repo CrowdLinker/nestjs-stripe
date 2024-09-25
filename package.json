@@ -1,6 +1,6 @@
 {
   "name": "@crowdlinker/nestjs-stripe",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Stripe Module for NestJS",
   "main": "index.js",
   "author": "Crowdlinker Inc.",
